@@ -49,7 +49,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BackingProperties\BackingPropertiesDemo.csproj">
+    <ProjectReference Include="..\BackingPropertiesDemo\BackingPropertiesDemo.csproj">
       <Project>{bc314162-c248-490c-8be6-2c896ded30ad}</Project>
       <Name>BackingPropertiesDemo</Name>
     </ProjectReference>
