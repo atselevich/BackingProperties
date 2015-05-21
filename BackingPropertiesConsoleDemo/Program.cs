@@ -13,8 +13,8 @@ namespace BackingPropertiesConsoleDemo
     using System.Configuration;
     using System.Globalization;
 
-    using BackingProperties;
-    using BackingProperties.Extensions;
+    using BackingPropertiesDemo;
+    using BackingPropertiesDemo.Extensions;
 
     /// <summary>
     ///     The program.
@@ -52,7 +52,7 @@ namespace BackingPropertiesConsoleDemo
         {
             get
             {
-                return BackingProperties.GetOrSetPropertyValue(() => Multiply(Ticks, ConfigurationValue));
+                return BackingProperties.GetOrSetPropertyValue(() => Multiply(NovemberDays, ConfigurationValue));
             }
         }
 
@@ -123,7 +123,7 @@ namespace BackingPropertiesConsoleDemo
         {
             Console.WriteLine("Ticks {0}", Ticks);
             Console.WriteLine("NovemberDays {0}", NovemberDays);
-            Console.WriteLine("NovemberDaysTimesConfigurationValue {0}", ConfigurationValue);
+            Console.WriteLine("ConfigurationValue {0}", ConfigurationValue);
             Console.WriteLine("NovemberDaysTimesConfigurationValue {0}", NovemberDaysTimesConfigurationValue);
 
             BackingProperties.SetPropertyValue(20, "NovemberDays");

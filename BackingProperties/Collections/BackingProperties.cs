@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace BackingProperties
+namespace BackingPropertiesDemo
 {
     using System;
     using System.Collections.Concurrent;
@@ -101,7 +101,7 @@ namespace BackingProperties
         /// <returns>
         /// The <see cref="T"/>.
         /// </returns>
-        public T GetPropertyValueOrDefault<T>(
+        public T GetOrSetPropertyValueOrDefault<T>(
             Func<T> method, 
             T defaultValue, 
             [CallerMemberName] string propertyName = null)

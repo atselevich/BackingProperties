@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace BackingProperties.Extensions
+namespace BackingPropertiesDemo.Extensions
 {
     using System;
     using System.Globalization;

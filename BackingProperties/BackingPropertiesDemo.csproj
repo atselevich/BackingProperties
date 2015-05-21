@@ -7,8 +7,8 @@
     <ProjectGuid>{BC314162-C248-490C-8BE6-2C896DED30AD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BackingProperties</RootNamespace>
-    <AssemblyName>BackingProperties</AssemblyName>
+    <RootNamespace>BackingPropertiesDemo</RootNamespace>
+    <AssemblyName>BackingPropertiesDemo</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
