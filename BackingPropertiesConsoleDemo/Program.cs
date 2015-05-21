@@ -40,7 +40,7 @@ namespace BackingPropertiesConsoleDemo
         {
             get
             {
-                return BackingProperties.GetPropertyValue(GetDaysInNovember);
+                return BackingProperties.GetOrSetPropertyValue(GetDaysInNovember);
             }
         }
 
@@ -52,7 +52,7 @@ namespace BackingPropertiesConsoleDemo
         {
             get
             {
-                return BackingProperties.GetPropertyValue(() => Multiply(Ticks, ConfigurationValue));
+                return BackingProperties.GetOrSetPropertyValue(() => Multiply(Ticks, ConfigurationValue));
             }
         }
 
@@ -64,7 +64,7 @@ namespace BackingPropertiesConsoleDemo
         {
             get
             {
-                return BackingProperties.GetPropertyValue(
+                return BackingProperties.GetOrSetPropertyValue(
                     () =>
                         {
                             var number = DateTime.Now.Ticks;
@@ -81,7 +81,7 @@ namespace BackingPropertiesConsoleDemo
             get
             {
                 return
-                    BackingProperties.GetPropertyValue(
+                    BackingProperties.GetOrSetPropertyValue(
                         () => ConfigurationManager.AppSettings["ConfigurationValue"].ConvertAsInt(10));
             }
         }
@@ -94,7 +94,7 @@ namespace BackingPropertiesConsoleDemo
         {
             get
             {
-                return BackingProperties.GetPropertyValue(() => "This was written in C#");
+                return BackingProperties.GetOrSetPropertyValue(() => "This was written in C#");
             }
         }
 

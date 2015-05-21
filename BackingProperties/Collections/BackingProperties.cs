@@ -36,7 +36,7 @@ namespace BackingProperties
         /// <returns>
         /// The <see cref="T"/>.
         /// </returns>
-        public T GetPropertyValue<T>(Func<T> method, [CallerMemberName] string propertyName = null)
+        public T GetOrSetPropertyValue<T>(Func<T> method, [CallerMemberName] string propertyName = null)
         {
             if (this.ContainsKey(propertyName))
             {
