@@ -10,14 +10,14 @@
 namespace BackingPropertiesConsoleDemo
 {
     using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
+    using System.Configuration;
+    using System.Globalization;
 
     using BackingProperties;
+    using BackingProperties.Extensions;
 
     /// <summary>
-    /// The program.
+    ///     The program.
     /// </summary>
     internal class Program
     {
@@ -48,11 +48,11 @@ namespace BackingPropertiesConsoleDemo
         /// <summary>
         ///     Gets the file count times ticks.
         /// </summary>
-        public static long NovermberDaysTimesTicks
+        public static long NovemberDaysTimesConfigurationValue
         {
             get
             {
-                return BackingProperties.GetPropertyValue(() => Multiply(Ticks, NovemberDays));
+                return BackingProperties.GetPropertyValue(() => Multiply(Ticks, ConfigurationValue));
             }
         }
 
@@ -70,6 +70,19 @@ namespace BackingPropertiesConsoleDemo
                             var number = DateTime.Now.Ticks;
                             return number;
                         });
+            }
+        }
+
+        /// <summary>
+        /// Gets the configuration value.
+        /// </summary>
+        public static int ConfigurationValue
+        {
+            get
+            {
+                return
+                    BackingProperties.GetPropertyValue(
+                        () => ConfigurationManager.AppSettings["ConfigurationValue"].ConvertAsInt(10));
             }
         }
 
@@ -110,7 +123,8 @@ namespace BackingPropertiesConsoleDemo
         {
             Console.WriteLine("Ticks {0}", Ticks);
             Console.WriteLine("NovemberDays {0}", NovemberDays);
-            Console.WriteLine("NovermberDaysTimesTicks {0}", NovermberDaysTimesTicks);
+            Console.WriteLine("NovemberDaysTimesConfigurationValue {0}", ConfigurationValue);
+            Console.WriteLine("NovemberDaysTimesConfigurationValue {0}", NovemberDaysTimesConfigurationValue);
 
             BackingProperties.SetPropertyValue(20, "NovemberDays");
             Console.WriteLine("We just set NovemberDays to 20, did it work?");
@@ -118,15 +132,16 @@ namespace BackingPropertiesConsoleDemo
             Console.WriteLine("NovemberDays {0}", BackingProperties.GetPropertyValue<int>("NovemberDays"));
             Console.WriteLine("Retrieving NovemberDays By Accessing Property");
             Console.WriteLine("NovemberDays {0}", NovemberDays);
-            Console.WriteLine("NovermberDaysTimesTicks {0}", NovermberDaysTimesTicks);
+            Console.WriteLine("NovemberDaysTimesConfigurationValue {0}", NovemberDaysTimesConfigurationValue);
 
-            Console.WriteLine("If I need to run the logic that usually gets NovemberDays I need remove the backing property");
+            Console.WriteLine(
+                "If I need to run the logic that usually gets NovemberDays I need remove the backing property");
 
             BackingProperties.Remove("NovemberDays");
 
             Console.WriteLine("Now the logic will fire again because the Backing Property is clear");
             Console.WriteLine("NovemberDays {0}", NovemberDays);
-            Console.WriteLine("NovermberDaysTimesTicks {0}", NovermberDaysTimesTicks);
+            Console.WriteLine("NovemberDaysTimesConfigurationValue {0}", NovemberDaysTimesConfigurationValue);
 
             Console.WriteLine(WrittenIn);
             Console.Read();
@@ -147,13 +162,6 @@ namespace BackingPropertiesConsoleDemo
         private static long Multiply(long ticks, int fileCount)
         {
             return ticks * fileCount;
-        }
-
-        public class Car
-        {
-            public string Make { get; set; }
-
-            public string Color { get; set; }
         }
 
         #endregion
